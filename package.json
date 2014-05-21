@@ -10,13 +10,18 @@
     "type": "git",
     "url": "https://github.com/rogerz/socket-io-faker"
   },
-  "keywords": ["socket-io","fake"],
+  "keywords": [
+    "socket-io",
+    "fake"
+  ],
   "author": "rogerz <rogerz@letsface.com>",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/rogerz/socket-io-faker/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
   "devDependencies": {
     "chai": "~1.8.1",
     "grunt-contrib-jshint": "~0.6.4",
