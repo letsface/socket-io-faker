@@ -29,4 +29,27 @@ io.sockets.on('connection', function(socket) {
       console.warn('no answer for: ' + JSON.stringify(data));
     }
   });
+  // hard coded repeating publish
+  // toggling attended status
+  var attended = true;
+  setInterval(function() {
+    attended = !attended;
+    socket.emit('api', {
+      op: 'pub',
+      payload: {
+        "id": 11,
+        "alias": "guest1",
+        "version": 2,
+        "type": "Guest",
+        "doc": {
+          "firstname": "James",
+          "lastname": "Zhu",
+          "photo": "upload/photos/2014_3_11/34af3d5e-9d71-454a-af8b-b559aceb03f6.jpg",
+          "attended": attended
+        },
+        "state": "updated",
+        "displayName": "James Zhu"
+      }
+    });
+  }, 5000);
 });
