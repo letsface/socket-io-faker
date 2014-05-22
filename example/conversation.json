@@ -1,0 +1,127 @@
+[{
+  "in": {
+    "op": "version",
+    "payload": "v1"
+  },
+  "out": {
+    "op": "out",
+    "payload": {
+      "version": "v1",
+      "methods": ["create", "currentUser", "find", "findOne", "login",
+        "logout", "remove", "sync", "update", "version"
+      ]
+    }
+  }
+}, {
+  "in": {
+    "op": "login",
+    "payload": {
+      "password": "test",
+      "username": "test"
+    },
+    "request": 1
+  },
+  "out": {
+    "op": "out",
+    "request": 1,
+    "payload": {
+      "id": 7,
+      "alias": "user",
+      "version": 2,
+      "type": "User",
+      "doc": {
+        "username": "test",
+        "lastlogin": 1400724508311
+      },
+      "rel": {},
+      "mac": {
+        "test": {
+          "query": true,
+          "update": true
+        }
+      },
+      "state": "updated",
+      "displayName": "test"
+    }
+  }
+}, {
+  "in": {
+    "op": "create",
+    "payload": {
+      "alias": "event1",
+      "doc": {
+        "name": "Test event #1"
+      },
+      "type": "Event"
+    },
+    "request": 4
+  },
+  "out": {
+    "op": "out",
+    "request": 4,
+    "payload": {
+      "id": 10,
+      "alias": "event1",
+      "version": 1,
+      "type": "Event",
+      "doc": {
+        "name": "Test event #1"
+      },
+      "rel": {},
+      "mac": {
+        "test": {
+          "query": true,
+          "find": true,
+          "remove": true,
+          "update": true
+        }
+      },
+      "state": "created",
+      "displayName": "Test event #1"
+    }
+  }
+}, {
+  "in": {
+    "op": "find",
+    "payload": {
+      "rel": {
+        "Event": {
+          "alias": "event1"
+        }
+      },
+      "type": "Guest"
+    },
+    "request": 7
+  },
+  "out": {
+    "op": "out",
+    "request": 7,
+    "payload": [{
+      "id": 11,
+      "alias": "guest1",
+      "version": 2,
+      "type": "Guest",
+      "doc": {
+        "firstname": "James",
+        "lastname": "Zhu",
+        "photo": "upload/photos/2014_3_11/34af3d5e-9d71-454a-af8b-b559aceb03f6.jpg",
+        "attended": true
+      },
+      "state": "updated",
+      "displayName": "James Zhu"
+    }, {
+      "id": 12,
+      "alias": "guest2",
+      "version": 2,
+      "type": "Guest",
+      "doc": {
+        "firstname": "Joe",
+        "lastname": "Lambert",
+        "photo": "upload/photos/2014_3_11/34af3d5e-9d71-454a-af8b-b559aceb03f6.jpg",
+        "attended": false
+      },
+      "state": "updated",
+      "displayName": "Joe Lambert "
+    }]
+  }
+}]

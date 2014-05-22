@@ -20,7 +20,8 @@
     "url": "https://github.com/rogerz/socket-io-faker/issues"
   },
   "dependencies": {
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "socket.io": "^0.9.16"
   },
   "devDependencies": {
     "chai": "~1.8.1",
