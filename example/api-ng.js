@@ -4,8 +4,8 @@
 */
 
 var Answer = require('..').Answer;
-var conv = require('./conversation.json');
-var answer = new Answer(conv);
+var rules = require('./rules.json');
+var answer = new Answer(rules);
 
 answer.match = function sameOp(a, b) {
   if ('op' in a && 'op' in b) {
@@ -21,13 +21,28 @@ var io = require('socket.io').listen(port);
 console.log('socket.io server listening on: ' + port);
 
 io.sockets.on('connection', function(socket) {
+  var state = 'connected'; // simple state machine
   socket.on('api', function(data) {
-    var ans = answer.to(data);
-    if (ans) {
-      socket.emit('api', ans);
-    } else {
-      console.warn('no answer for: ' + JSON.stringify(data));
-    }
+    answer.process(state, 'api', data, function (err, ans, newState) {
+      if (err) {
+        socket.emit('api', {
+          op: 'err',
+          payload: {
+            message: err.message,
+            name: err.name
+          }
+        });
+        return;
+      }
+      if (newState) {
+        state = newState;
+      }
+      if (ans) {
+        socket.emit(ans.event, ans.data);
+      } else {
+        console.warn('no answer for: ' + JSON.stringify(data));
+      }
+    });
   });
   // hard coded repeating publish
   // toggling attended status
