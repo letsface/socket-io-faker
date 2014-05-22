@@ -28,7 +28,8 @@ Play it with ThreePin
 
 ```
 git clone https://github.com/letsface/ThreePin.git
-npm install -g serve
 cd ThreePin
-serve .
+bower install
+npm install -g serve
+serve
 ```
