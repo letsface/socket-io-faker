@@ -66,5 +66,5 @@ io.sockets.on('connection', function(socket) {
         "displayName": "James Zhu"
       }
     });
-  }, 5000);
+  }, 10000);
 });
