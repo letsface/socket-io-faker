@@ -1,19 +1,8 @@
-/* a fake api-ng
-  create conversation rules from recorded messages
-  match op only
-*/
+/* a fake api-ng server */
 
 var Answer = require('..').Answer;
 var rules = require('./rules.json');
 var answer = new Answer(rules);
-
-answer.match = function sameOp(a, b) {
-  if ('op' in a && 'op' in b) {
-    return a.op === b.op;
-  } else {
-    return false;
-  }
-};
 
 var port = process.argv[2] || 4444;
 var io = require('socket.io').listen(port);
@@ -44,7 +33,7 @@ io.sockets.on('connection', function(socket) {
       }
     });
   });
-  // hard coded repeating publish
+  // FIXME: hard coded repeating publish
   // toggling attended status
   var attended = true;
   setInterval(function() {

@@ -18,7 +18,7 @@ describe('recorder', function() {
       }]);
     });
     it('should pair conversation', function() {
-      var conv = rec.conversation();
+      var conv = rec.buildRules();
       expect(conv).to.eql([{ in : {
           event: 'api',
           data: 'hello',
@@ -37,7 +37,7 @@ describe('recorder', function() {
     it('should create new conversation', function() {
       rec.in ('api', 'hello1');
       rec.in ('api', 'hello2');
-      var conv = rec.conversation();
+      var conv = rec.buildRules();
       expect(conv).to.eql([{
         in : {
           event: 'api',
@@ -59,7 +59,7 @@ describe('recorder', function() {
       rec.in ('api', 'hello');
       rec.out('api', 'world');
       rec.out('api', 'bye');
-      var conv = rec.conversation();
+      var conv = rec.buildRules();
       expect(conv).to.eql([{
         in : {
           event: 'api',

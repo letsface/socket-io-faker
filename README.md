@@ -14,6 +14,21 @@ $ npm install socket-io-faker
 
 ## Example Usage
 
-``` js
-var socketIoFaker = require('socket-io-faker');
+Creating a fake api-ng server
+
+```
+git clone https://github.com/letsface/socket-io-faker
+cd socket-io-faker
+npm install
+cd examples
+node api-ng.js
+```
+
+Play it with ThreePin
+
+```
+git clone https://github.com/letsface/ThreePin.git
+npm install -g serve
+cd ThreePin
+serve .
 ```
