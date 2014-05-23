@@ -4,7 +4,7 @@ var Answer = require('..').Answer;
 var rules = require('./rules.json');
 var answer = new Answer(rules);
 
-var port = process.argv[2] || 4444;
+var port = process.argv[2] || parseInt(process.env.PORT) || 4444;
 var io = require('socket.io').listen(port);
 
 console.log('socket.io server listening on: ' + port);
